@@ -21,6 +21,14 @@ rclone copy --tpslimit 10 --fast-list -P --drive-shared-with-me gdrive-pers:CSU-
 
 # You would need to modify that for your own system.
 
+# CHRIS' MODIFICATIONS TO ERIC'S CODE
+
+# I have already downlaoded this to my scratch directory in the following location:
+# /home/wcfunk@colostate.edu/scratch/chinook-play/chinook-genome-idx/GCA_002872995.1_Otsh_v1.0_genomic.fna.gz
+
+# BUT, if I hadn't already downloaded this, I would could download it as follows:
+rclone copy --tpslimit 10 --fast-list -P --drive-shared-with-me gdrive-rclone:CSU-con-gen-2020/pre-indexed-chinook-genome  pre-indexed-chinook-genome
+
 
 # 2. Download the 2,560 gzipped fastq files.  These are in the shared folder at
 #  https://drive.google.com/drive/folders/11fLG7b0RV1Uij9CbYh_jt_Xp_dyfLetO?usp=sharing
@@ -31,7 +39,10 @@ rclone copy --tpslimit 10 --fast-list -P --drive-shared-with-me gdrive-pers:CSU-
 # Here is how I did it:
 rclone copy --tpslimit 10 --fast-list -P --drive-shared-with-me gdrive-pers:CSU-con-gen-2020/fastqs-chr32-160-chinook-8-lanes  fastqs-chr32-160-chinook-8-lanes
 
+# CHRIS' MODIFICATIONS TO ERIC'S CODE
 
+# Here's how I downloaded the fastq files to my Summit scatch directory
+rclone copy --tpslimit 10 --fast-list -P --drive-shared-with-me gdrive-rclone:CSU-con-gen-2020/fastqs-chr32-160-chinook-8-lanes  fastqs-chr32-160-chinook-8-lanes
 
 
 # 3. Move the folder with the preindexed genome into this repository directory
@@ -43,6 +54,11 @@ ln -s /home/eanderson/scratch/chinook-play/chinook-genome-idx genome
 # You will have to modify this to reflect the proper location of the
 # directory on your system.
 
+# CHRIS' MODIFICATIONS TO ERIC'S CODE
+
+# How I made a symbolic link to the preindexed genome directory in the repository directory
+ln -s /home/wcfunk@colostate.edu/scratch/chinook-play/chinook-genome-idx genome
+
 
 # 4. Move (or make a symbolic link), the directory fastqs-chr32-160-chinook-8-lanes containing
 # all the gzipped FASTQ files into a directory named "fastqs" in this repository directory.
@@ -53,7 +69,10 @@ ln -s  /home/eanderson/scratch/course_stuff/fastqs-chr32-160-chinook-8-lanes fas
 # You will have to modify this to reflect the proper location of the
 # directory on your system.
 
+# CHRIS' MODIFICATIONS TO ERIC'S CODE
 
+# How I made a symbolic link to the fastq directory in the repository directory
+ln -s /home/wcfunk@colostate.edu/scratch/fastqs-chr32-160-chinook-8-lanes fastqs
 
 
 # With all of this in place.  You are ready to get an interactive
