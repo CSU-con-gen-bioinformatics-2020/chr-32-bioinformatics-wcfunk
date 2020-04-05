@@ -54,7 +54,6 @@ for((Idx=$START; Idx<=$STOP; Idx++)); do
 
   echo "Starting work on file index $Idx at $(date)"
   
-  
   # This awk script extracts the appropriate line from the chinook-fastq-meta-data.tsv
   # file and makes a command line that sets shell variables named after the column
   # headers in the file to their appropriate values:
@@ -65,7 +64,7 @@ for((Idx=$START; Idx<=$STOP; Idx++)); do
   
   # then we have to eval the assignments in that command line:
   eval $ASSIGNMENTS
-  
+
   # make some directories for output (if not there already)
   # the -p says "don't bark a warning if the directory already exists."
   mkdir -p bam
@@ -82,11 +81,9 @@ for((Idx=$START; Idx<=$STOP; Idx++)); do
   SAM_FIX_STDERR=stderr/samtools_fixmate_stderr_$file_prefix
   SAM_SORT_STDERR=stderr/samtools_sort_stderr_$file_prefix
  
-  
-  
   # make a variable for the read-group string
   RGString="@RG\tID:$ID\tSM:$SM\tLB:$LB\tPU:$PU\tPL:$PL"
-  
+
   # now, map, convert to bam, fix mates, sort in coordinate order, and
   # finally remove the intermediate fixed-mate file
   bwa mem -R $RGString $GENOME $READ1 $READ2 2> $BWA_STDERR |
